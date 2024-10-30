@@ -180,7 +180,7 @@ body {
     display: flex;
 }
 
-.cart_numbering_label {
+.cart_quantity_count {
     position: absolute;
     transform: translate(-50%, 50%);
     border-radius: 50%;
@@ -191,15 +191,6 @@ body {
     right: 5px;
     background-color: white;
     color: black;
-}
-
-.cart_quantity_count {
-    margin-top: 16px;
-    /* background-color: red; */
-    margin-left: 27px;
-    position: absolute;
-    font-size: 29px;
-
 }
 
 .plantname_heading {

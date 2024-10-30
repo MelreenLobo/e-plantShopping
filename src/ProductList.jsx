@@ -18,6 +18,22 @@ function ProductList() {
         }));
     };
 
+    const handleDeleteToCart = () => {
+        const removedItems = Object.keys(addedToCart)
+        const itemsInCart = cartItems.map(item => item.name)
+
+        const missingItems = removedItems.filter((items) => {
+            return !itemsInCart.includes(items)
+        })
+
+        missingItems.forEach((plantName) => {
+            setAddedToCart((prevState) => ({
+                ...prevState,
+                [plantName]: false, // Set the product name as key and value as false to indicate it's removed from cart
+            }));
+        })
+    };
+
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -270,6 +286,7 @@ function ProductList() {
 
     useEffect(() => {
         totalItemsInTheCart();
+        handleDeleteToCart();
     }, [cartItems]);
 
     return (
@@ -309,6 +326,7 @@ function ProductList() {
                                         <button
                                             className={`product-button ${addedToCart[plant.name] ? 'added-to-cart' : ''}`}
                                             onClick={() => handleAddToCart(plant)}
+                                            disabled={addedToCart[plant.name]}
                                         >
                                             {addedToCart[plant.name] ? 'Added' : 'Add to Cart'}
                                         </button>
